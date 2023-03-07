@@ -1,0 +1,39 @@
+class tree {
+  public static void main (String args[]) {
+    buildTree(4,3); // 3 segments of height 4
+    buildTree(5,2); // 2 segments of height 5
+  }
+  public static void buildTree(int height, int segment) {
+    int a = height;
+    int b = 1;
+    for (int start = 1; start <= segment; start++) { // vertical rows
+      for (int t = 1; t <= height; t++) { // horizontal rows
+        for (int u = 1; u <= a - t + 3; u++) { // determines amount of spaces to give it the tree shape
+          System.out.print(" "); // prints spaces
+        }
+        for (int v = 1; v <= 2 * t - b; v++) { // how many stars are in a row 
+          System.out.print("*");
+        }
+        System.out.println();
+      }
+      a--; // the triangle needs to become wider as it goes down the tree
+      b-=2; // top triangle starts with a point of 1 star and the second has a top of 3 stars
+    }
+    for (int i = 1; i <= 2; i++) { // number of stars in the trunk
+      for (int k = 1; k <= height + 2; k++) { // lines up the tree trunks
+        System.out.print(" "); // spaces the trunks
+      }
+      for (int j = 1; j <= 1; j++) { // how many rows horizontally are in the trunk
+        System.out.print("*");
+      }
+      System.out.println();
+    }
+    for (int p = 1; p < height; p++) { // determines the height of each tree,
+      								// first section of trees has height of 4
+      								// other section of trees has height of 5
+      System.out.print(" "); // spaces the base of the tree to be lined up
+    }
+    System.out.print("*******"); // base of tree
+    System.out.println();
+  }
+}
